@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let kayit of kayitlar">
+            <div class="card text-center bg-transparent border-danger">
+                <div class="card-header text-danger">
+                    <h4>{{kayit.baslik}}</h4>
+                    
+                </div>
+                <div class="card-body ">
+                    <div [innerHTML]="kayit.konu"></div>
+                </div>
+                <div style="float: right;">
+                        <button class="btn btn-outline-danger btn-sm" [routerLink]="['/kayitdetay',kayit.key]">Detay</button>
+                        <button class="btn btn-outline-warning btn-sm ml-3" *ngIf="kayit.uid == uid" [routerLink]="['/kayitduzenle',kayit.key]">Düzenle</button>
+                        <button class="btn btn-outline-danger btn-sm ml-3" *ngIf="kayit.uid == uid" [routerLink]="['/kayitsil',kayit.key]">Sil</button>
+                    </div>
+                <div class="card-footer">
+                    <b>Eklenme Tarihi : </b> {{kayit.kayTarih | date:'dd.MM.yyyy HH:mm:ss'}} <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
